@@ -29,3 +29,13 @@ post('/brands') do
     erb(:errors_brand)
   end
 end
+
+get('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i)
+  erb(:store_detail)
+end
+
+get('/brands/:id') do
+  @brand = Brand.find(params.fetch('id').to_i)
+  erb(:brand_detail)
+end

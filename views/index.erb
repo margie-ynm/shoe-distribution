@@ -2,6 +2,16 @@
 
 <div class="row">
   <div class="col-md-6">
+    <div class="well">
+      <h3>New store:</h3>
+      <div class="form-group">
+        <form action="/stores" method="post">
+          <label for="store-name">Name:</label>
+          <input type="text" name="store-name" placeholder="Enter a store's name">
+          <button type="submit" class="btn">Add store</button>
+        </form>
+      </div>
+    </div>
     <% if @stores == [] %>
     <h5>Currently, there are no stores at this distribution.</h5>
     <% else %>
@@ -16,18 +26,18 @@
     </ul>
 
     <% end %>
-    <h3>New store:</h3>
+  </div>
+  <div class="col-md-6">
     <div class="well">
+      <h3>New brand:</h3>
       <div class="form-group">
-        <form action="/stores" method="post">
-          <label for="store-name">Name:</label>
-          <input type="text" name="store-name" placeholder="Enter a store's name">
-          <button type="submit" class="btn">Add store</button>
+        <form action="/brands" method="post">
+          <label for="brand-name">Name:</label>
+          <input type="text" name="brand-name" placeholder="Enter a brand's name">
+          <button type="submit" class="btn">Add brand</button>
         </form>
       </div>
     </div>
-  </div>
-  <div class="col-md-6">
     <% if @brands == [] %>
     <h5>Currently, there are no brands at this distribution.</h5>
     <% else %>
@@ -42,15 +52,5 @@
     </ul>
 
     <% end %>
-    <h3>New brand:</h3>
-    <div class="well">
-      <div class="form-group">
-        <form action="/brands" method="post">
-          <label for="brand-name">Name:</label>
-          <input type="text" name="brand-name" placeholder="Enter a brand's name">
-          <button type="submit" class="btn">Add brand</button>
-        </form>
-      </div>
-    </div>
   </div>
 </div>
