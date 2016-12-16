@@ -51,7 +51,7 @@ describe("RESTful routes", {:type => :feature}) do
       visit("/stores/#{@store.id}")
       click_button('Delete Store')
       expect(page).not_to have_content(@store.name)
-      # expect(Store.find(@store.id)).to eq(nil)
+      expect(Store.all).to eq([])
     end
   end
 
@@ -66,11 +66,33 @@ describe("RESTful routes", {:type => :feature}) do
     end
   describe("DELETE brand") do
     it('allows a user to delete a brand') do
-      @brand = Brand.create({:name => "footcubby"})
+      @brand = Brand.create({:name => "multdidas"})
       visit("/brands/#{@brand.id}")
       click_button('Delete Brand')
       expect(page).not_to have_content(@brand.name)
-      # expect(Brand.find(@brand.id)).to eq(nil)
+      expect(Brand.all).to eq([])
+    end
+  end
+
+  describe("associating") do
+    it("allows a user to associate a store with a brand") do
+      @store = Store.create({:name => "footcubby"})
+      @brand = Brand.create({:name => "multdidas"})
+      visit("/stores/#{@store.id}")
+      select("multdidas", :from => "brand_id")
+      click_button("Submit")
+      expect(page).to have_content("multdidas")
+    end
+  end
+
+  describe("associating") do
+    it("allows a user to associate a brand with a store") do
+      @store = Store.create({:name => "footcubby"})
+      @brand = Brand.create({:name => "multdidas"})
+      visit("/brands/#{@brand.id}")
+      select("footcubby", :from => "store_id")
+      click_button("Submit")
+      expect(page).to have_content("footcubby")
     end
   end
 

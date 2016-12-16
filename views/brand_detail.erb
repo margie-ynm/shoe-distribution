@@ -1,14 +1,49 @@
 <h2><%= @brand.name %></h2>
 
-<h4>Update Details:</h4>
-<form action="/brands/<%= @brand.id %>/edit" method="post">
-  <input name="_method" type="hidden" value="patch">
-  <label for="new-brand-name"><h5>Brand Name:</h5></label>
-  <input type="text" id="new-brand-name" name="new-brand-name">
-  <button type="submit" class="btn">Update Brand</button>
-</form>
+<div class="row">
+  <div class="col-md-6">
+    <% if @brand.stores.any? %>
+    <h3>Currently in stock at:</h3>
+    <ul>
+      <% @brand.stores.each() do |store_brand| %>
+        <li><%= store_brand.name %></li>
+      <% end %>
+    </ul>
 
-<form action="/brands/<%= @brand.id %>" method="post">
-  <input name="_method" type="hidden" value="delete">
-  <button type="submit" class="btn">Delete Brand</button>
-</form>
+    <% else %>
+
+      <p><strong>Currently not in stock at any stores.</strong></p>
+
+    <% end %>
+
+    <p>Add a store that now has inventory for this shoe brand:</p>
+
+    <form id="add_store_id" action="/brands/<%= @brand.id() %>" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <input type="hidden" name="brand_id" id="brand_id" value="<%= @brand.id() %>">
+      <label for="store_id">Select a store:</label>
+        <br>
+      <select id="store_id" name="store_id">
+        <option value=""></option>
+        <% @stores.each() do |store| %>
+          <option value="<%= store.id() %>"><%= store.name() %></option>
+        <% end %>
+      </select>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+  <div class="col-md-6">
+    <h4>Update Details:</h4>
+    <form action="/brands/<%= @brand.id %>/edit" method="post">
+      <input name="_method" type="hidden" value="patch">
+      <label for="new-brand-name"><h5>Brand Name:</h5></label>
+      <input type="text" id="new-brand-name" name="new-brand-name">
+      <button type="submit" class="btn">Update Brand</button>
+    </form>
+
+    <form action="/brands/<%= @brand.id %>" method="post">
+      <input name="_method" type="hidden" value="delete">
+      <button type="submit" class="btn">Delete Brand</button>
+    </form>
+  </div>
+</div>
