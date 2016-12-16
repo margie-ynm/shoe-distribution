@@ -39,3 +39,29 @@ get('/brands/:id') do
   @brand = Brand.find(params.fetch('id').to_i)
   erb(:brand_detail)
 end
+
+patch('/stores/:id/edit') do
+  @store = Store.find(params.fetch('id').to_i)
+  name = params.fetch('new-store-name')
+  @store.update({:name => name})
+  redirect "/stores/#{params.fetch('id').to_i}"
+end
+
+delete('/stores/:id') do
+  @store = Store.find(params.fetch('id').to_i)
+  @store.destroy()
+  redirect "/"
+end
+
+patch('/brands/:id/edit') do
+  @brand = Brand.find(params.fetch('id').to_i)
+  name = params.fetch('new-brand-name')
+  @brand.update({:name => name})
+  redirect "/brands/#{params.fetch('id').to_i}"
+end
+
+delete('/brands/:id') do
+  @brand = Brand.find(params.fetch('id').to_i)
+  @brand.destroy()
+  redirect "/"
+end
