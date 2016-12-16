@@ -1,0 +1,56 @@
+<h1>Shoe Distribution</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <% if @stores == [] %>
+    <h5>Currently, there are no stores at this distribution.</h5>
+    <% else %>
+    <h2>Existing Stores:</h2>
+    <ul>
+      <%@stores.each() do |store| %>
+
+      <li><a href="/stores/<%= store.id() %>"><%= store.name %></a></li>
+
+    <% end %>
+
+    </ul>
+
+    <% end %>
+    <h3>New store:</h3>
+    <div class="well">
+      <div class="form-group">
+        <form action="/stores" method="post">
+          <label for="store-name">Name:</label>
+          <input type="text" name="name" placeholder="Enter a store's name">
+          <button type="submit" class="btn">Add store</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <% if @brands == [] %>
+    <h5>Currently, there are no brands at this distribution.</h5>
+    <% else %>
+    <h2>Existing Brands:</h2>
+    <ul>
+      <%@brands.each() do |brand| %>
+
+      <li><a href="/brands/<%= brand.id() %>"><%= brand.name %></a></li>
+
+    <% end %>
+
+    </ul>
+
+    <% end %>
+    <h3>New brand:</h3>
+    <div class="well">
+      <div class="form-group">
+        <form action="/brands" method="post">
+          <label for="brand-name">Name:</label>
+          <input type="text" name="name" placeholder="Enter a brand's name">
+          <button type="submit" class="btn">Add brand</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

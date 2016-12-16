@@ -3,3 +3,9 @@ Bundler.require(:default)
 require("pry")
 
 Dir[File.dirname(__FILE__) + '/lib/*.rb'].each { |file| require file }
+
+get('/') do
+  @stores = Store.all()
+  @brands = Brand.all()
+  erb(:index)
+end
