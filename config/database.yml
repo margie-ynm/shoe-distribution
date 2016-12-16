@@ -1,6 +1,7 @@
 development:
   adapter: postgresql
   database: shoe_distribution
+  
 test:
   adapter: postgresql
-  database: shoe_distribution_test 
+  database: shoe_distribution_test
