@@ -6,7 +6,7 @@
 
 ## Description
 
-_The application allows a user to input stores and shoe brands. It will not save if there is a blank field. It will also convert entry to titlecase. The user is able to click on an individual store or shoe brand, from list, and be navigated to its individual page. Once there, editing or deleting item is possible. As well as, associating a store with a shoe brand and vice versa._
+_The application allows a user to input stores and shoe brands. It will not save if there is a blank field. It will also convert entry to titlecase. The user is able to click on a single store or shoe brand, from list, and be navigated to its individual page. Once there, editing or deleting item is possible. In addition, the user is able to associate a store with a shoe brand and vice versa._
 
 ## Setup/Installation Requirements
 
