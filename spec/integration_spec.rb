@@ -45,6 +45,7 @@ describe("RESTful routes", {:type => :feature}) do
         expect(page).to have_content("Foot Cubby")
       end
     end
+
   describe("DELETE store") do
     it('allows a user to delete a store') do
       @store = Store.create({:name => "Foot Cubby"})

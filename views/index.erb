@@ -8,14 +8,14 @@
         <form action="/stores" method="post">
           <label for="store-name">Name:</label>
           <input type="text" name="store-name" placeholder="Enter a store's name">
-          <button type="submit" class="btn">Add store</button>
+          <button type="submit" class="btn btn-primary">Add store</button>
         </form>
       </div>
     </div>
     <% if @stores == [] %>
     <h5>Currently, there are no stores at this distribution.</h5>
     <% else %>
-    <h2>Existing Stores:</h2>
+    <h2>Stores:</h2>
     <ul>
       <%@stores.each() do |store| %>
 
@@ -34,14 +34,14 @@
         <form action="/brands" method="post">
           <label for="brand-name">Name:</label>
           <input type="text" name="brand-name" placeholder="Enter a brand's name">
-          <button type="submit" class="btn">Add brand</button>
+          <button type="submit" class="btn btn-primary">Add brand</button>
         </form>
       </div>
     </div>
     <% if @brands == [] %>
     <h5>Currently, there are no brands at this distribution.</h5>
     <% else %>
-    <h2>Existing Brands:</h2>
+    <h2 class="main-page">Brands:</h2>
     <ul>
       <%@brands.each() do |brand| %>
 
